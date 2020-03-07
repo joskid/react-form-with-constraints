@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { shallow } from 'enzyme';
 import { StyleSheet } from 'react-native';
-import * as TestRenderer from 'react-test-renderer';
+import TestRenderer from 'react-test-renderer';
 
 import { beautifyHtml } from '../../react-form-with-constraints/src/beautifyHtml';
 import {

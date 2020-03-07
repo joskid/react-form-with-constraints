@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 // Recursive React.Children.forEach()
 // Taken from https://github.com/fernandopasik/react-children-utilities/blob/v0.2.2/src/index.js#L68

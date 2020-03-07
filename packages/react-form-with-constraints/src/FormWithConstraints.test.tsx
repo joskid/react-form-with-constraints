@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { mount as _mount } from 'enzyme';
 
 import {

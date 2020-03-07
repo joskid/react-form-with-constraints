@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Text, View, TextProps, StyleProp } from 'react-native';
 import { TextInput } from './TextInput'; // Specific to TypeScript
 
