@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FormWithConstraints, FormWithConstraintsChildContext } from './FormWithConstraints';
 import { Field } from './Field';
+import { FormWithConstraints, FormWithConstraintsChildContext } from './FormWithConstraints';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   innerRef?: React.Ref<HTMLInputElement>;

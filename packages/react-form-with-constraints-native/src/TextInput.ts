@@ -1,7 +1,6 @@
 import React from 'react';
-import { TextInput as _TextInput, TextInputProps } from 'react-native';
-
 import { Constructor } from 'react-form-with-constraints';
+import { TextInput as _TextInput, TextInputProps } from 'react-native';
 
 // [[react-native] Wrong type for component ref](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16318#issuecomment-381512846)
 

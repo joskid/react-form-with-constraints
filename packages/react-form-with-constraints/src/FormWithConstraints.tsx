@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withValidateFieldEventEmitter } from './withValidateFieldEventEmitter';
-import { withFieldWillValidateEventEmitter } from './withFieldWillValidateEventEmitter';
-import { withFieldDidValidateEventEmitter } from './withFieldDidValidateEventEmitter';
-import { withFieldDidResetEventEmitter } from './withFieldDidResetEventEmitter';
-import { Field } from './Field';
-import { IHTMLInput, InputElement, HTMLInput } from './InputElement';
-import { FieldsStore } from './FieldsStore';
-import { FieldFeedbackValidation } from './FieldFeedbackValidation';
-import { notUndefined } from './notUndefined';
 import { assert } from './assert';
+import { Field } from './Field';
+import { FieldFeedbackValidation } from './FieldFeedbackValidation';
+import { FieldsStore } from './FieldsStore';
+import { HTMLInput, IHTMLInput, InputElement } from './InputElement';
+import { notUndefined } from './notUndefined';
+import { withFieldDidResetEventEmitter } from './withFieldDidResetEventEmitter';
+import { withFieldDidValidateEventEmitter } from './withFieldDidValidateEventEmitter';
+import { withFieldWillValidateEventEmitter } from './withFieldWillValidateEventEmitter';
+import { withValidateFieldEventEmitter } from './withValidateFieldEventEmitter';
 
 export interface FormWithConstraintsChildContext {
   form: FormWithConstraints;
