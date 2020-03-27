@@ -1358,10 +1358,12 @@ describe('validate', () => {
   });
 
   describe('validateFieldsWithoutFeedback()', () => {
+    // eslint-disable-next-line jest/expect-expect
     test('inputs', async () => {
       //
     });
 
+    // eslint-disable-next-line jest/expect-expect
     test('field names', async () => {
       //
     });
@@ -1538,10 +1540,10 @@ describe('validate', () => {
       );
       const form = wrapper.instance() as FormWithConstraints;
 
-      await expect(form.validateFieldsWithoutFeedback()).resolves.toEqual([]); // Ignore input without FieldFeedbacks
-      await expect(form.validateFieldsWithoutFeedback('username')).resolves.toEqual([]); // Ignore input without FieldFeedbacks
-      await expect(form.validateFieldsWithoutFeedback('unknown')).rejects.toEqual(
-        new Error(`Could not find field '[name="unknown"]' inside the form`)
+      expect(await form.validateFieldsWithoutFeedback()).toEqual([]); // Ignore input without FieldFeedbacks
+      expect(await form.validateFieldsWithoutFeedback('username')).toEqual([]); // Ignore input without FieldFeedbacks
+      await expect(form.validateFieldsWithoutFeedback('unknown')).rejects.toThrow(
+        `Could not find field '[name="unknown"]' inside the form`
       );
 
       wrapper.unmount();
@@ -1581,14 +1583,14 @@ describe('validate', () => {
 
       // [async/await toThrow is not working](https://github.com/facebook/jest/issues/1700)
 
-      await expect(form.validateFields('username')).resolves.toEqual([
+      expect(await form.validateFields('username')).toEqual([
         { name: 'username', element: expect.any(HTMLInputElement), validations: [] }
       ]);
-      await expect(form.validateFields()).rejects.toEqual(
-        new Error(`Multiple elements matching '[name="password"]' inside the form`)
+      await expect(form.validateFields()).rejects.toThrow(
+        `Multiple elements matching '[name="password"]' inside the form`
       );
-      await expect(form.validateFields('password')).rejects.toEqual(
-        new Error(`Multiple elements matching '[name="password"]' inside the form`)
+      await expect(form.validateFields('password')).rejects.toThrow(
+        `Multiple elements matching '[name="password"]' inside the form`
       );
 
       wrapper.unmount();
@@ -1602,10 +1604,10 @@ describe('validate', () => {
       );
       const form = wrapper.instance() as FormWithConstraints;
 
-      await expect(form.validateFields()).resolves.toEqual([]); // Ignore input without FieldFeedbacks
-      await expect(form.validateFields('username')).resolves.toEqual([]); // Ignore input without FieldFeedbacks
-      await expect(form.validateFields('unknown')).rejects.toEqual(
-        new Error(`Could not find field '[name="unknown"]' inside the form`)
+      expect(await form.validateFields()).toEqual([]); // Ignore input without FieldFeedbacks
+      expect(await form.validateFields('username')).toEqual([]); // Ignore input without FieldFeedbacks
+      await expect(form.validateFields('unknown')).rejects.toThrow(
+        `Could not find field '[name="unknown"]' inside the form`
       );
 
       wrapper.unmount();
@@ -1615,9 +1617,9 @@ describe('validate', () => {
       const wrapper = mount(<FormWithConstraints>ChildWithPropsUndefined</FormWithConstraints>);
       const form = wrapper.instance() as FormWithConstraints;
 
-      await expect(form.validateFields()).resolves.toEqual([]);
-      await expect(form.validateFields('unknown')).rejects.toEqual(
-        new Error(`Could not find field '[name="unknown"]' inside the form`)
+      expect(await form.validateFields()).toEqual([]);
+      await expect(form.validateFields('unknown')).rejects.toThrow(
+        `Could not find field '[name="unknown"]' inside the form`
       );
 
       wrapper.unmount();
@@ -1631,9 +1633,9 @@ describe('validate', () => {
       );
       const form = wrapper.instance() as FormWithConstraints;
 
-      await expect(form.validateFields()).resolves.toEqual([]);
-      await expect(form.validateFields('a-49ekipqfmwsv')).rejects.toEqual(
-        new Error(`'[name="a-49ekipqfmwsv"]' should match an <input>, <select> or <textarea>`)
+      expect(await form.validateFields()).toEqual([]);
+      await expect(form.validateFields('a-49ekipqfmwsv')).rejects.toThrow(
+        `'[name="a-49ekipqfmwsv"]' should match an <input>, <select> or <textarea>`
       );
 
       wrapper.unmount();

@@ -5,28 +5,19 @@ const config = {
   parser: '@typescript-eslint/parser',
   parserOptions: {},
   extends: [
-    // /!\ Order seems to matter
-
+    // /!\ Order matters: the next one overrides rules from the previous one
+    'plugin:jest/recommended',
     'airbnb',
+    // Already done by Airbnb
+    //'plugin:react/recommended'
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
     'prettier/react'
-
-    // Already done by Airbnb
-    //'plugin:react/recommended'
   ],
-  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
-  settings: {
-    react: {
-      version: 'detect'
-    }
-  },
+  plugins: ['react-hooks'],
   env: {
-    es6: true,
-    browser: true,
-    node: true,
-    jest: true
+    browser: true
   },
   globals: {
     // Jest Puppeteer, see https://github.com/smooth-code/jest-puppeteer/blob/v4.0.0/README.md#configure-eslint
@@ -42,7 +33,6 @@ const config = {
     'spaced-comment': 'off',
     'no-lonely-if': 'off',
     'max-classes-per-file': 'off',
-
     // [no-return-assign should be configurable to ignore arrow-functions](https://github.com/eslint/eslint/issues/9471)
     'no-return-assign': 'off',
 
@@ -50,35 +40,32 @@ const config = {
 
     'import/no-extraneous-dependencies': 'off',
     'import/no-unresolved': 'off',
+    // [Avoid Export Default](https://basarat.gitbook.io/typescript/main-1/defaultisbad)
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
 
-    'jsx-a11y/label-has-for': 'off',
-    'jsx-a11y/label-has-associated-control': 'off',
-    'jsx-a11y/iframe-has-title': 'off',
-
-    '@typescript-eslint/indent': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/explicit-member-accessibility': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-parameter-properties': 'off',
-    '@typescript-eslint/array-type': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+
+    'jsx-a11y/label-has-associated-control': 'off',
 
     'react/no-unescaped-entities': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
     'react/jsx-pascal-case': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'react/static-property-placement': ['error', 'static public field'],
-    'react/state-in-constructor': ['error', 'never'],
-    'react/sort-comp': 'off',
+    'react/static-property-placement': 'off',
+    'react/state-in-constructor': 'off',
 
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn'
+    'react-hooks/exhaustive-deps': 'error',
+
+    'jest/no-expect-resolves': 'error',
+    'jest/expect-expect': 'off'
   },
 
   // FIXME ?
@@ -89,6 +76,12 @@ const config = {
       files: ['*.js'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off'
+      }
+    },
+    {
+      files: ['*.test.tsx'],
+      rules: {
+        'jsx-a11y/iframe-has-title': 'off'
       }
     }
   ]
